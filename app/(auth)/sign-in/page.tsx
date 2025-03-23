@@ -4,6 +4,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import Image from "next/image";
 import React from "react";
+import { FcGoogle } from "react-icons/fc";
 
 function SignIn() {
   const googleLogin = useGoogleLogin({
@@ -19,12 +20,23 @@ function SignIn() {
     onError: (errorResponse) => console.log(errorResponse),
   });
   return (
-    <div className="flex items-center flex-col justify-center h-screen">
-      <div className="flex items-center flex-col gap-5 border rounded-2xl shadow-md p-10">
-        <Image src={"/logo.svg"} alt="Logo" width={100} height={100} />
-        <h2 className="text-2xl">Sign In to Quantum Pilot & Agent</h2>
-        <Button className="cursor-pointer" onClick={() => googleLogin()}>
-          Sign In with Google
+    <div
+      className="flex items-center flex-col justify-center h-screen p-5 md:p-0"
+      style={{
+        background: "linear-gradient(to top, #09203f 0%, #537895 100%)",
+      }}
+    >
+      <div className="flex items-center flex-col gap-5 border rounded-md shadow-md p-10 bg-slate-50">
+        <Image src={"/logo.svg"} alt="Logo" width={50} height={50} />
+        <h2 className="text-2xl md:text-3xl text-center">
+          Sign In to{" "}
+          <span className="font-bold text-zinc-600">Quantum Pilot & Agent</span>
+        </h2>
+        <Button
+          className="cursor-pointer text-lg p-5 rounded-sm md:pt-6 md:pb-6 font-light"
+          onClick={() => googleLogin()}
+        >
+          Sign In with Google <FcGoogle />
         </Button>
       </div>
     </div>
