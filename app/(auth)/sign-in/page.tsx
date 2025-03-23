@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button";
 import { GetAuthUserData } from "@/services/GlobalApi";
 import { useGoogleLogin } from "@react-oauth/google";
-import axios from "axios";
 import Image from "next/image";
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
