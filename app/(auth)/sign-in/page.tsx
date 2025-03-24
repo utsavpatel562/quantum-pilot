@@ -14,6 +14,8 @@ function SignIn() {
       }
       const user = GetAuthUserData(tokenResponse.access_token);
       console.log(user);
+
+      // Save User Info
     },
     onError: (errorResponse) => console.log(errorResponse),
   });
