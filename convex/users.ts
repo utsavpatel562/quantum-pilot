@@ -24,10 +24,8 @@ export const CreateUser  = mutation({
                 credits: 5000,    
             };
             const result = await ctx.db.insert('users', data);
-            // Return the newly created user data
             return data;
         }
-        // If the user already exists, return the existing user data
-        return user[0];
+        return user[0]; // return the existing user data
     }
 });

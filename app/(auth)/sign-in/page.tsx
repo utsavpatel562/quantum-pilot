@@ -1,22 +1,23 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { AuthContext } from "@/context/AuthContext";
 import { api } from "@/convex/_generated/api";
 import { GetAuthUserData } from "@/services/GlobalApi";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useMutation } from "convex/react";
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 
 function SignIn() {
   const CreateUser = useMutation(api.users.CreateUser);
+  const { user, setUser } = useContext(AuthContext);
   const googleLogin = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       if (typeof window !== undefined) {
         localStorage.setItem("user_token", tokenResponse.access_token);
       }
       const user = await GetAuthUserData(tokenResponse.access_token);
-      console.log(user);
 
       // Save User Info
       const result = await CreateUser({
@@ -24,7 +25,7 @@ function SignIn() {
         email: user?.email,
         picture: user?.picture,
       });
-      console.log("--", result);
+      setUser(result);
     },
     onError: (errorResponse) => console.log(errorResponse),
   });
