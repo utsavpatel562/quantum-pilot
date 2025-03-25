@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import { AuthContext } from "@/context/AuthContext";
 import { api } from "@/convex/_generated/api";
@@ -14,7 +15,7 @@ function SignIn() {
   const { user, setUser } = useContext(AuthContext);
   const googleLogin = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
-      if (typeof window !== undefined) {
+      if (typeof window !== "undefined") {
         localStorage.setItem("user_token", tokenResponse.access_token);
       }
       const user = await GetAuthUserData(tokenResponse.access_token);
@@ -29,25 +30,67 @@ function SignIn() {
     },
     onError: (errorResponse) => console.log(errorResponse),
   });
+
   return (
-    <div
-      className="flex items-center flex-col justify-center h-screen p-5 md:p-0"
-      style={{
-        background: "linear-gradient(to top, #09203f 0%, #537895 100%)",
-      }}
-    >
-      <div className="flex items-center flex-col gap-5 border rounded-md shadow-md p-10 bg-slate-50">
-        <Image src={"/logo.svg"} alt="Logo" width={50} height={50} />
-        <h2 className="text-2xl md:text-3xl text-center">
-          Sign In to{" "}
-          <span className="font-bold text-zinc-600">Quantum Pilot & Agent</span>
-        </h2>
-        <Button
-          className="cursor-pointer text-lg p-5 rounded-sm md:pt-6 md:pb-6 font-light"
-          onClick={() => googleLogin()}
+    <div className="flex items-center flex-col justify-center min-h-screen p-5 bg-slate-900">
+      <div
+        className="flex flex-col md:flex-row w-full items-center justify-center overflow-hidden rounded-2xl border border-slate-900"
+        style={{
+          background: "linear-gradient(to top, #dfe9f3 0%, white 100%)",
+        }}
+      >
+        {/* Left Section */}
+        <div className="flex flex-col items-center gap-5 p-10 m-5 w-full md:w-[50%]">
+          <Image src={"/logo.svg"} alt="Logo" width={50} height={50} />
+          <h2 className="text-2xl md:text-3xl text-center">
+            Sign In to{" "}
+            <span className="font-bold text-zinc-600">
+              Quantum Pilot & Agent
+            </span>
+          </h2>
+          <Button
+            className="cursor-pointer text-lg p-5 md:py-6 rounded-sm font-light w-full sm:w-auto flex items-center gap-2"
+            onClick={() => googleLogin()}
+          >
+            <FcGoogle className="text-2xl" /> Sign In with Google
+          </Button>
+
+          {/* Avatar Group */}
+          <div className="flex items-center justify-center md:mt-5 flex-wrap gap-2">
+            {[
+              "img5.png",
+              "img3.png",
+              "img4.png",
+              "img6.png",
+              "img8.png",
+              "img7.png",
+            ].map((src, index) => (
+              <img
+                key={index}
+                className="border-2 p-1 bg-slate-800 border-white rounded-full h-16 w-16 object-cover"
+                src={`/${src}`}
+                alt=""
+              />
+            ))}
+            <span className="flex items-center justify-center bg-slate-800 text-lg text-white font-semibold border-2 border-gray-200 rounded-full px-3 md:p-3">
+              +10 AI Agents
+            </span>
+          </div>
+        </div>
+
+        {/* Right Section */}
+        {/* Right Section */}
+        <div
+          className="hidden md:flex w-full md:w-[50%] justify-center items-center h-[300px] md:h-screen"
+          style={{
+            background: "linear-gradient(to top, #09203f 0%, #537895 100%)",
+          }}
         >
-          Sign In with Google <FcGoogle />
-        </Button>
+          <img
+            src="/img7.png"
+            className="w-[85%] max-w-[400px] md:max-w-[85%]"
+          />
+        </div>
       </div>
     </div>
   );
