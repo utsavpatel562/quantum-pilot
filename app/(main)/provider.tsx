@@ -31,13 +31,12 @@ function Provider({
       const result = await convex.query(api.users.GetUser, {
         email: user?.email,
       });
-      console.log(result);
       setUser(result);
     } catch (e) {}
   };
   return (
     <div>
-      {/* <Header /> */}
+      <Header />
       {children}
     </div>
   );
