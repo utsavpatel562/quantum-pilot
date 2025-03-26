@@ -7,7 +7,7 @@ export const GetAuthUserData = async (token: string) => {
       { headers: { Authorization: "Bearer" + token } }
     );
     return userInfo.data;
-  } catch (error) {
-    return error;
+  } catch (e) {
+    return e;
   }
 };

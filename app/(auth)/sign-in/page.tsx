@@ -29,7 +29,7 @@ function SignIn() {
         picture: user?.picture,
       });
       setUser(result);
-      router.replace("ai-assistants");
+      router.replace("/ai-assistants");
     },
     onError: (errorResponse) => console.log(errorResponse),
   });
