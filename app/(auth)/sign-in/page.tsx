@@ -9,6 +9,7 @@ import { useMutation } from "convex/react";
 import Image from "next/image";
 import React, { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { RiDvdAiLine } from "react-icons/ri";
 
 function SignIn() {
   const CreateUser = useMutation(api.users.CreateUser);
@@ -75,6 +76,10 @@ function SignIn() {
             <span className="flex items-center justify-center bg-slate-800 text-lg text-white font-semibold border-2 border-gray-200 rounded-full px-3 md:p-3">
               +10 AI Agents
             </span>
+
+            <h2 className="text-lg text-center mt-5 md:mt-10 text-slate-600 font-bold md:font-bold md:text-2xl">
+              Beyond Assistance – AI that Thinks Ahead.
+            </h2>
           </div>
         </div>
 
