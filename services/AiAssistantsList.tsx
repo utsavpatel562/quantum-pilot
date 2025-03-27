@@ -1,7 +1,9 @@
+// All AI Agents Info
+
 export default [
   {
     id: 1,
-    name: "",
+    name: "Blake",
     title: "Fitness Coach",
     image: "/fitness_coach.png",
     instruction: `Answer fitness-realated questions only`,
@@ -15,7 +17,7 @@ export default [
   },
   {
     id: 2,
-    name: "",
+    name: "Emily",
     title: "Grammar Fixer",
     image: "/img6.png",
     instruction: `Fix grammar mistakes in provided text.`,
@@ -29,8 +31,8 @@ export default [
   },
   {
     id: 3,
-    name: "",
-    title: "Email Writer & Reply Assistant",
+    name: "Mia",
+    title: "Email Writer & Assistant",
     image: "/email_writer.png",
     instruction: `Assist in writing and replying to emails.`,
     userInstruction: `Generate well-structured emails based on the provided information.`,
@@ -43,7 +45,7 @@ export default [
   },
   {
     id: 4,
-    name: "",
+    name: "Ethan",
     title: "YouTube Script Writer",
     image: "/youtube_script_writer.png",
     instruction: `Create engaging YouTube scripts.`,
@@ -57,7 +59,7 @@ export default [
   },
   {
     id: 5,
-    name: "",
+    name: "Max",
     title: "Code Writer",
     image: "/code_writer.png",
     instruction: `Write and assist with coding tasks.`,
@@ -71,7 +73,7 @@ export default [
   },
   {
     id: 6,
-    name: "",
+    name: "Amelia",
     title: "Bug Finder",
     image: "/img4.png",
     instruction: `Identify and fix issues in code`,
@@ -85,7 +87,7 @@ export default [
   },
   {
     id: 7,
-    name: "",
+    name: "Isabella",
     title: "Finance Assistant",
     image: "/finance_assistant.png",
     instruction: `Provide financial advice and tips`,
@@ -99,7 +101,7 @@ export default [
   },
   {
     id: 8,
-    name: "",
+    name: "Lily",
     title: "Virtual Girlfriend",
     image: "/virtual_girlfriend.png",
     instruction: `Engage in friendly and romantic chats`,
@@ -113,7 +115,7 @@ export default [
   },
   {
     id: 9,
-    name: "",
+    name: "Nathan",
     title: "Virtual Boyfriend",
     image: "/virtual_boyfriend.png",
     instruction: `Engage in friendly and supportive chats`,
@@ -127,7 +129,7 @@ export default [
   },
   {
     id: 10,
-    name: "",
+    name: "Sophia",
     title: "Personal Tutor",
     image: "/personal_tutor.png",
     instruction: `Help users with study-related queries`,
