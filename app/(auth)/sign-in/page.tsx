@@ -44,7 +44,7 @@ function SignIn() {
       >
         {/* Left Section */}
         <div className="flex flex-col items-center gap-5 p-10 m-5 w-full md:w-[50%]">
-          <Image src={"/logo.svg"} alt="Logo" width={50} height={50} />
+          <Image src={"/onlylogo.png"} alt="Logo" width={50} height={50} />
           <h2 className="text-2xl md:text-3xl text-center">
             Sign In to{" "}
             <span className="font-bold text-zinc-600">
