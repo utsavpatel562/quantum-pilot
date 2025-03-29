@@ -4,10 +4,38 @@ import AiAssistantsList from "@/services/AiAssistantsList";
 import Image from "next/image";
 import React, { useState } from "react";
 
+export type ASSISTANT = {
+  id: number;
+  name: string;
+  title: string;
+  image: string;
+  instruction: string;
+  userInstruction: string;
+  sampleQuestions: string[];
+};
+
 function AIAssistants() {
-  const [selectedAssistant, setSelectedAssistant] = useState();
-  const onSelect = (assistant: any) => {};
+  const [selectedAssistant, setSelectedAssistant] = useState<ASSISTANT[]>([]);
+
+  const onSelect = (assistant: ASSISTANT) => {
+    const isAlreadySelected = selectedAssistant.some(
+      (item) => item.id === assistant.id
+    );
+    if (isAlreadySelected) {
+      setSelectedAssistant(
+        selectedAssistant.filter((item) => item.id !== assistant.id)
+      );
+    } else {
+      setSelectedAssistant((prev) => [...prev, assistant]);
+    }
+  };
+
+  const isAssistantSelected = (assistant: ASSISTANT) => {
+    return selectedAssistant.some((item) => item.id === assistant.id);
+  };
+
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+
   return (
     <div className="px-6 mt-10 md:px-16 lg:px-22 xl:px-34">
       {/* Header */}
@@ -64,19 +92,23 @@ function AIAssistants() {
 
       {/* AI Assistants Grid/List */}
       <div
-        className={`mt-10 gap-5 ${
+        className={`mt-10 gap-5 md:mb-10  ${
           viewMode === "grid"
             ? "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
             : "flex flex-col space-y-5"
         }`}
       >
-        {AiAssistantsList.map((assistant, index) => (
+        {AiAssistantsList.map((assistant) => (
           <div
-            key={index}
-            className="hover:border border-zinc-300 p-3 rounded-xl hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer hover:shadow-lg"
+            key={assistant.id}
+            className="relative hover:border border-zinc-300 p-3 rounded-xl hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer hover:shadow-lg"
             onClick={() => onSelect(assistant)}
           >
-            <Checkbox className="absolute m-3 border-2" />
+            <Checkbox
+              className="absolute top-5 rounded-full left-5 border-2"
+              checked={isAssistantSelected(assistant)}
+              onCheckedChange={() => onSelect(assistant)} // Fix checkbox toggle
+            />
             <Image
               src={assistant.image}
               alt={assistant.title}
