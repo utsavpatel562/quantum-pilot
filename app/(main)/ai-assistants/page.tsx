@@ -1,11 +1,13 @@
 "use client";
+import { Checkbox } from "@/components/ui/checkbox";
 import AiAssistantsList from "@/services/AiAssistantsList";
 import Image from "next/image";
 import React, { useState } from "react";
 
 function AIAssistants() {
+  const [selectedAssistant, setSelectedAssistant] = useState();
+  const onSelect = (assistant: any) => {};
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-
   return (
     <div className="px-6 mt-10 md:px-16 lg:px-22 xl:px-34">
       {/* Header */}
@@ -24,7 +26,7 @@ function AIAssistants() {
           <a
             href="#"
             title="payment"
-            className="group relative inline-flex items-center justify-center text-base rounded-md bg-gray-900 px-6 py-2 md:px-8 md:py-3 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-gray-600/30 animate-pulse"
+            className="group relative inline-flex items-center justify-center text-base rounded-md bg-gray-900 px-6 py-2 md:px-8 md:py-3 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-gray-600/30"
           >
             Continue
             <svg
@@ -49,14 +51,14 @@ function AIAssistants() {
       </div>
 
       {/* View Mode Toggle (Visible Only on Mobile) */}
-      <div className="flex justify-end mt-6 md:hidden">
+      <div className="flex justify-center mt-6 md:hidden">
         <button
           onClick={() => setViewMode(viewMode === "grid" ? "list" : "grid")}
-          className="bg-gray-900 text-white px-4 py-2 rounded-md transition-all hover:bg-gray-800"
+          className="text-slate-800 border border-slate-700 px-4 py-2 rounded-sm transition-all hover:bg-gray-800"
         >
           {viewMode === "grid"
-            ? "🔄 Switch to List View"
-            : "🔲 Switch to Grid View"}
+            ? "Switch to List View 🔃"
+            : "Switch to Grid View 🔁"}
         </button>
       </div>
 
@@ -72,7 +74,9 @@ function AIAssistants() {
           <div
             key={index}
             className="hover:border border-zinc-300 p-3 rounded-xl hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer hover:shadow-lg"
+            onClick={() => onSelect(assistant)}
           >
+            <Checkbox className="absolute m-3 border-2" />
             <Image
               src={assistant.image}
               alt={assistant.title}
