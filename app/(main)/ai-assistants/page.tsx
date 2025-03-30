@@ -1,4 +1,5 @@
 "use client";
+import { BlurFade } from "@/components/magicui/blur-fade";
 import { Checkbox } from "@/components/ui/checkbox";
 import AiAssistantsList from "@/services/AiAssistantsList";
 import Image from "next/image";
@@ -41,12 +42,16 @@ function AIAssistants() {
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
         <div className="mb-6 md:mb-0">
-          <h2 className="text-3xl md:text-3xl font-bold text-slate-800 dark:text-slate-300">
-            Welcome to the World of AI Agents 🤖
-          </h2>
-          <p className="text-base md:text-lg mt-2 text-slate-600 dark:text-slate-400">
-            Find the Perfect AI Partner to Enhance Your Productivity. 🚀💻
-          </p>
+          <BlurFade delay={0.25} inView>
+            <h2 className="text-3xl md:text-3xl font-bold text-slate-800 dark:text-slate-300">
+              Welcome to the World of AI Agents 🤖
+            </h2>
+          </BlurFade>
+          <BlurFade delay={0.25 * 2} inView>
+            <p className="text-base md:text-lg mt-2 text-slate-600 dark:text-slate-400">
+              Find the Perfect AI Partner to Enhance Your Productivity. 🚀💻
+            </p>
+          </BlurFade>
         </div>
 
         <div className="relative inline-flex items-center justify-center gap-4 group">
@@ -98,33 +103,38 @@ function AIAssistants() {
             : "flex flex-col space-y-5"
         }`}
       >
-        {AiAssistantsList.map((assistant) => (
-          <div
-            key={assistant.id}
-            className="relative hover:border border-zinc-300 p-3 rounded-xl hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer hover:shadow-lg"
-            onClick={() => onSelect(assistant)}
-          >
-            <Checkbox
-              className="absolute top-5 rounded-full left-5 border-2"
-              checked={isAssistantSelected(assistant)}
-              onCheckedChange={() => onSelect(assistant)} // Fix checkbox toggle
-            />
-            <Image
-              src={assistant.image}
-              alt={assistant.title}
-              height={600}
-              width={600}
-              className="rounded-xl w-full h-[200px] object-cover border border-gray-300 shadow-md transition-opacity opacity-0 duration-700"
-              onLoad={(e) => (e.currentTarget.style.opacity = "1")}
-              style={{
-                background: "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)",
-              }}
-            />
-            <h2 className="text-center font-bold text-lg">{assistant.name}</h2>
-            <h2 className="text-center text-gray-600 dark:text-gray-300">
-              {assistant.title}
-            </h2>
-          </div>
+        {AiAssistantsList.map((assistant, index) => (
+          <BlurFade key={assistant.image} delay={0.25 + index * 0.05} inView>
+            <div
+              key={assistant.id}
+              className="relative hover:border border-zinc-300 p-3 rounded-xl hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer hover:shadow-lg"
+              onClick={() => onSelect(assistant)}
+            >
+              <Checkbox
+                className="absolute top-5 rounded-full left-5 border-2"
+                checked={isAssistantSelected(assistant)}
+                onCheckedChange={() => onSelect(assistant)} // Fix checkbox toggle
+              />
+              <Image
+                src={assistant.image}
+                alt={assistant.title}
+                height={600}
+                width={600}
+                className="rounded-xl w-full h-[200px] object-cover border border-gray-300 shadow-md transition-opacity opacity-0 duration-700"
+                onLoad={(e) => (e.currentTarget.style.opacity = "1")}
+                style={{
+                  background:
+                    "linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)",
+                }}
+              />
+              <h2 className="text-center font-bold text-lg">
+                {assistant.name}
+              </h2>
+              <h2 className="text-center text-gray-600 dark:text-gray-300">
+                {assistant.title}
+              </h2>
+            </div>
+          </BlurFade>
         ))}
       </div>
     </div>
