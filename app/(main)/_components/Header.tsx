@@ -7,7 +7,7 @@ function Header() {
   const { user } = useContext(AuthContext);
 
   return (
-    <div className="p-3 shadow-sm flex justify-between items-center px-6 md:px-14">
+    <div className="p-3 shadow-sm flex justify-between items-center px-6 md:px-14 dark:border-b-2 dark:border-b-zinc-700 sticky top-0 z-50 bg-white dark:bg-black">
       {/* Logo */}
       <Image
         src={"/logo.png"}
