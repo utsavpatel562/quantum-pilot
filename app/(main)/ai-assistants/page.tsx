@@ -2,10 +2,14 @@
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { AuthContext } from "@/context/AuthContext";
+import { api } from "@/convex/_generated/api";
 import AiAssistantsList from "@/services/AiAssistantsList";
+import { useMutation } from "convex/react";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { FiLoader } from "react-icons/fi";
 
 export type ASSISTANT = {
   id: number;
@@ -19,7 +23,11 @@ export type ASSISTANT = {
 
 function AIAssistants() {
   const [selectedAssistant, setSelectedAssistant] = useState<ASSISTANT[]>([]);
-
+  const insertAssistant = useMutation(
+    api.userAiAssistants.InsertSelectAssistants
+  );
+  const { user } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
   const onSelect = (assistant: ASSISTANT) => {
     const isAlreadySelected = selectedAssistant.some(
       (item) => item.id === assistant.id
@@ -35,6 +43,16 @@ function AIAssistants() {
 
   const isAssistantSelected = (assistant: ASSISTANT) => {
     return selectedAssistant.some((item) => item.id === assistant.id);
+  };
+
+  const OnClickContinue = async () => {
+    setLoading(true);
+    const result = await insertAssistant({
+      records: selectedAssistant,
+      uid: user?._id,
+    });
+    setLoading(false);
+    console.log(result);
   };
 
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
@@ -56,12 +74,13 @@ function AIAssistants() {
           </BlurFade>
         </div>
         <RainbowButton
+          onClick={OnClickContinue}
           className={`flex items-center gap-2 bg-slate-800 rounded-md shadow-2xl dark:bg-sky-200 ${
             selectedAssistant?.length === 0 ? "cursor-wait opacity-50" : ""
           }`}
-          disabled={selectedAssistant?.length == 0}
+          disabled={selectedAssistant?.length == 0 || loading}
         >
-          Continue
+          Continue {loading && <FiLoader className="animate-spin" />}
           <FaArrowRight className="w-3 h-3" />
         </RainbowButton>
       </div>
