@@ -41,10 +41,10 @@ function AIAssistants() {
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
         <div className="mb-6 md:mb-0">
-          <h2 className="text-3xl md:text-3xl font-bold text-slate-800">
+          <h2 className="text-3xl md:text-3xl font-bold text-slate-800 dark:text-slate-300">
             Welcome to the World of AI Agents 🤖
           </h2>
-          <p className="text-base md:text-lg mt-2 text-slate-600">
+          <p className="text-base md:text-lg mt-2 text-slate-600 dark:text-slate-400">
             Find the Perfect AI Partner to Enhance Your Productivity. 🚀💻
           </p>
         </div>
@@ -54,11 +54,11 @@ function AIAssistants() {
           <a
             href="#"
             title="payment"
-            className="group relative inline-flex items-center justify-center text-base rounded-md bg-gray-900 px-6 py-2 md:px-8 md:py-3 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-gray-600/30"
+            className="dark:bg-sky-200 dark:text-slate-900 group relative inline-flex items-center justify-center text-base rounded-md bg-gray-900 px-6 py-2 md:px-8 md:py-3 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-gray-600/30"
           >
             Continue
             <svg
-              className="mt-0.5 ml-2 -mr-1 stroke-white stroke-2"
+              className="mt-0.5 ml-2 -mr-1 stroke-white stroke-2 dark:stroke-slate-800"
               fill="none"
               width="10"
               height="10"
@@ -82,7 +82,7 @@ function AIAssistants() {
       <div className="flex justify-center mt-6 md:hidden">
         <button
           onClick={() => setViewMode(viewMode === "grid" ? "list" : "grid")}
-          className="text-slate-800 border border-slate-700 px-4 py-2 rounded-sm transition-all hover:bg-gray-800"
+          className="text-slate-800 border border-slate-700 dark:bg-sky-100 px-4 py-2 rounded-sm transition-all hover:bg-gray-800"
         >
           {viewMode === "grid"
             ? "Switch to List View 🔃"
