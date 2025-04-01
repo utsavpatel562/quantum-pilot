@@ -5,12 +5,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { AuthContext } from "@/context/AuthContext";
 import { api } from "@/convex/_generated/api";
 import AiAssistantsList from "@/services/AiAssistantsList";
-import { useMutation } from "convex/react";
+import { useConvex, useMutation } from "convex/react";
 import Image from "next/image";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { FiLoader } from "react-icons/fi";
 
+// import attributes of Assistant from AiAssistantsList
 export type ASSISTANT = {
   id: number;
   name: string;
@@ -28,6 +29,27 @@ function AIAssistants() {
   );
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
+  const convex = useConvex();
+
+  useEffect(() => {
+    user && GetUserAssistants();
+  }, [user]);
+
+  const GetUserAssistants = async () => {
+    const result = await convex.query(
+      api.userAiAssistants.GetAllUserAssistants,
+      {
+        uid: user._id,
+      }
+    );
+    console.log(result);
+    if (result.length > 0) {
+      // Navigate to new screen
+      return;
+    }
+  };
+
+  // for selecting multiple assistants and inserting them into the user's AI Assistants list
   const onSelect = (assistant: ASSISTANT) => {
     const isAlreadySelected = selectedAssistant.some(
       (item) => item.id === assistant.id
