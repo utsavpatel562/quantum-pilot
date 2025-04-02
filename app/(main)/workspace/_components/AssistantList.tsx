@@ -31,7 +31,7 @@ function AssistantList() {
         <Button className="cursor-pointer w-full mt-2 rounded-sm bg-slate-900 p-5 hover:bg-slate-800">
           + Add New AI Agent
         </Button>
-        <Input className="bg-white mt-3" placeholder="Search" />
+        <Input className="bg-white mt-3 rounded-sm p-5" placeholder="Search" />
       </div>
     </>
   );
