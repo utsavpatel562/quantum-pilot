@@ -47,7 +47,7 @@ function AIAssistants() {
     console.log(result);
     if (result.length > 0) {
       // Navigate to new screen
-      router.replace("/workspace");
+      router.push("/workspace");
       return;
     }
   };

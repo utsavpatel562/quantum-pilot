@@ -4,7 +4,7 @@ import AssistantList from "./_components/AssistantList";
 function WorkSpace() {
   return (
     <>
-      <div>
+      <div className="h-screen fixed w-full">
         <div className="grid grid-cols-5">
           {/*Assistant List - Selected by User*/}
           <div className="hidden md:block">
