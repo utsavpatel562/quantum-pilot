@@ -7,6 +7,7 @@ import { api } from "@/convex/_generated/api";
 import AiAssistantsList from "@/services/AiAssistantsList";
 import { useConvex, useMutation } from "convex/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { FiLoader } from "react-icons/fi";
@@ -30,6 +31,7 @@ function AIAssistants() {
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const convex = useConvex();
+  const router = useRouter();
 
   useEffect(() => {
     user && GetUserAssistants();
@@ -45,6 +47,7 @@ function AIAssistants() {
     console.log(result);
     if (result.length > 0) {
       // Navigate to new screen
+      router.replace("/workspace");
       return;
     }
   };
