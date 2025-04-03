@@ -7,11 +7,13 @@ import { useConvex } from "convex/react";
 import React, { useContext, useEffect, useState } from "react";
 import { ASSISTANT } from "../../ai-assistants/page";
 import Image from "next/image";
+import { AssistantContext } from "@/context/AssistantContext";
 
 function AssistantList() {
   const { user } = useContext(AuthContext);
   const convex = useConvex();
   const [assistantList, setAssistantList] = useState<ASSISTANT[]>([]);
+  const { assistant, setAssistant } = useContext(AssistantContext);
   useEffect(() => {
     user && GetUserAssistants();
   }, [user]);
@@ -38,7 +40,11 @@ function AssistantList() {
         <Input className="bg-white mt-3 rounded-sm p-5" placeholder="Search" />
         <div className="mt-5">
           {assistantList.map((assistant, index) => (
-            <div className="flex p-2 gap-3 items-center" key={index}>
+            <div
+              className="flex p-2 gap-3 items-center hover:bg-gray-200 hover:dark:bg-slate-700 rounded-lg cursor-pointer mt-2"
+              key={index}
+              onClick={() => setAssistant(assistant)}
+            >
               <Image
                 src={assistant.image}
                 alt={assistant.name}
