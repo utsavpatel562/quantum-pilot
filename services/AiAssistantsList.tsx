@@ -4,7 +4,7 @@ export default [
   {
     id: 1,
     name: "Blake",
-    title: "Fitness Coach",
+    title: "Fitness Coach 💪",
     image: "/fitness_coach.png",
     instruction: `Answer fitness-realated questions only`,
     userInstruction: `Respond to any fitness-related query.`,
@@ -18,7 +18,7 @@ export default [
   {
     id: 2,
     name: "Emily",
-    title: "Grammar Fixer",
+    title: "Grammar Fixer 📚",
     image: "/img6.png",
     instruction: `Fix grammar mistakes in provided text.`,
     userInstruction: `Check the grammar of the provided text and correct it if necessary.`,
@@ -32,7 +32,7 @@ export default [
   {
     id: 3,
     name: "Mia",
-    title: "Email Writer & Assistant",
+    title: "Email Writer & Assistant 👩‍💼",
     image: "/email_writer.png",
     instruction: `Assist in writing and replying to emails.`,
     userInstruction: `Generate well-structured emails based on the provided information.`,
@@ -46,7 +46,7 @@ export default [
   {
     id: 4,
     name: "Ethan",
-    title: "YouTube Script Writer",
+    title: "YouTube Script Writer 🎬",
     image: "/youtube_script_writer.png",
     instruction: `Create engaging YouTube scripts.`,
     userInstruction: `Generate structured and engaging scripts for YouTube videos.`,
@@ -60,7 +60,7 @@ export default [
   {
     id: 5,
     name: "Max",
-    title: "Code Writer",
+    title: "Code Writer 💻",
     image: "/code_writer.png",
     instruction: `Write and assist with coding tasks.`,
     userInstruction: `Generate code snippets, scripts, or provided coding tasks.`,
@@ -74,7 +74,7 @@ export default [
   {
     id: 6,
     name: "Amelia",
-    title: "Bug Finder",
+    title: "Bug Finder 🧑‍💻",
     image: "/img4.png",
     instruction: `Identify and fix issues in code`,
     userInstruction: `Analyze the provided code, find bugs, and suggest fixes.`,
@@ -88,7 +88,7 @@ export default [
   {
     id: 7,
     name: "Isabella",
-    title: "Finance Assistant",
+    title: "Finance Assistant 📊",
     image: "/finance_assistant.png",
     instruction: `Provide financial advice and tips`,
     userInstruction: `Offer financial advice, budgeting tips, and investment guidance.`,
@@ -102,7 +102,7 @@ export default [
   {
     id: 8,
     name: "Lily",
-    title: "Virtual Girlfriend",
+    title: "Virtual Girlfriend 🙋‍♀️",
     image: "/virtual_girlfriend.png",
     instruction: `Engage in friendly and romantic chats`,
     userInstruction: `Have friendly and romantic conversations, share thoughts and feelings.`,
@@ -116,7 +116,7 @@ export default [
   {
     id: 9,
     name: "Nathan",
-    title: "Virtual Boyfriend",
+    title: "Virtual Boyfriend 🙋‍♂️",
     image: "/virtual_boyfriend.png",
     instruction: `Engage in friendly and supportive chats`,
     userInstruction: `Have friendly and supportive conversations, share thoughts and feelings.`,
@@ -130,7 +130,7 @@ export default [
   {
     id: 10,
     name: "Sophia",
-    title: "Personal Tutor",
+    title: "Personal Tutor 👩‍🏫",
     image: "/personal_tutor.png",
     instruction: `Help users with study-related queries`,
     userInstruction: `Explain educational concepts, answer questions , and provide study tips.`,

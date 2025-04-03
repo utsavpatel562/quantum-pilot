@@ -78,6 +78,14 @@ function AIAssistants() {
     });
     setLoading(false);
     console.log(result);
+
+    // Refresh the page
+    window.location.reload();
+
+    // Redirect after a short delay to allow refresh
+    setTimeout(() => {
+      router.push("/workspace");
+    }, 100);
   };
 
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
