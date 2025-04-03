@@ -30,7 +30,7 @@ function AssistantList() {
   };
   return (
     <>
-      <div className="p-5 bg-secondary border-r-[1px] h-screen">
+      <div className="p-5 bg-secondary border-r-[1px] h-screen relative">
         <h2 className="font-bold text-lg text-center text-slate-800">
           Your Personal AI Assistants
         </h2>
@@ -66,7 +66,7 @@ function AssistantList() {
           ))}
         </div>
         {/* Footer */}
-        <div className="flex items-center gap-2 absolute bottom-20">
+        <div className="flex items-center gap-2 absolute bottom-20 hover:bg-gray-200 w-[87%] cursor-pointer p-2 rounded-lg">
           <Image
             src={user?.picture}
             alt="user"
