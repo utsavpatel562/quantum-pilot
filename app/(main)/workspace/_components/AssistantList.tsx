@@ -39,15 +39,15 @@ function AssistantList() {
         </Button>
         <Input className="bg-white mt-3 rounded-sm p-5" placeholder="Search" />
         <div className="mt-5">
-          {assistantList.map((assistant, index) => (
+          {assistantList.map((assistant_, index) => (
             <div
-              className="flex p-2 gap-3 items-center hover:bg-gray-200 hover:dark:bg-slate-700 rounded-lg cursor-pointer mt-2"
+              className={`flex p-2 gap-3 items-center hover:bg-gray-200 hover:dark:bg-slate-700 rounded-lg cursor-pointer mt-2 ${assistant_.id == assistant?.id && "bg-gray-200"}`}
               key={index}
-              onClick={() => setAssistant(assistant)}
+              onClick={() => setAssistant(assistant_)}
             >
               <Image
-                src={assistant.image}
-                alt={assistant.name}
+                src={assistant_.image}
+                alt={assistant_.name}
                 width={60}
                 height={60}
                 className="object-cover border border-gray-300 shadow-md rounded-md w-[70px] h-[70px]"
@@ -57,13 +57,29 @@ function AssistantList() {
                 }}
               />
               <div>
-                <h2 className="font-bold">{assistant.name}</h2>
+                <h2 className="font-bold">{assistant_.name}</h2>
                 <h2 className="text-gray-600 dark:text-gray-400">
-                  {assistant.title}
+                  {assistant_.title}
                 </h2>
               </div>
             </div>
           ))}
+        </div>
+        {/* Footer */}
+        <div className="flex items-center gap-2 absolute bottom-20">
+          <Image
+            src={user?.picture}
+            alt="user"
+            width={35}
+            height={35}
+            className="rounded-full"
+          />
+          <div>
+            <h2 className="font-bold text-md text-slate-700">{user?.name}</h2>
+            <h2 className="font-semibold text-sm text-gray-400">
+              {user?.orderId ? "Pro Plan" : "Free Plan"}
+            </h2>
+          </div>
         </div>
       </div>
     </>
