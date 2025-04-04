@@ -67,13 +67,15 @@ function AssistantList() {
         </div>
         {/* Footer */}
         <div className="flex items-center gap-2 absolute bottom-20 hover:bg-gray-200 w-[87%] cursor-pointer p-2 rounded-lg">
-          <Image
-            src={user?.picture}
-            alt="user"
-            width={35}
-            height={35}
-            className="rounded-full"
-          />
+          {user?.picture ? (
+            <Image
+              src={user?.picture}
+              alt="user"
+              width={35}
+              height={35}
+              className="rounded-full"
+            />
+          ) : null}
           <div>
             <h2 className="font-bold text-md text-slate-700">{user?.name}</h2>
             <h2 className="font-semibold text-sm text-gray-400">
